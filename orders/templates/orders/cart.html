@@ -1,0 +1,47 @@
+{% extends "orders/layout.html" %}
+{% load static %}
+{% load orders_tags %}
+
+<!-- reference: menu_dict[category][item][size][price] -->
+
+{% block title %}
+    Cart - Pinocchio's Pizza & Subs
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
+
+<script id="item-template" type="text/x-handlebars-template">
+    {% verbatim %}
+    <h5>Item {{item_num}}</h5>
+    Category: {{category}}<br>
+    Name: {{name}}<br>
+    {{#if size }}
+        Size: {{size}}<br>
+    {{/if}}
+    {{#if options }}
+        Options: {{options}}<br>
+    {{/if}}
+    Price: ${{price}}<br>
+    <button data-item_id="{{item_num}}" class="deleteitem">Delete Item</button>   
+    <br>
+    {% endverbatim %}
+</script>
+
+<script type="text/javascript" src="{% static 'orders/cartscripts.js' %}"></script>
+
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h3>Cart for: {{user.first_name}} {{user.last_name}}</h3>
+    <div id="cart_items">
+    </div>
+    <br>
+    Total: $<span id="total_field">0.00</span>
+    <br><br>
+    <button id="back_to_menu">Back to Menu</button>
+    <button id="confirm_order">Place Order</button>
+    
+</div>
+{% endblock %}

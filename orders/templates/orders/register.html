@@ -1,0 +1,23 @@
+{% extends "orders/layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h3>Register</h3>
+        <form action="{% url 'register' %}" method="post" id="regform">
+            {% csrf_token %}
+            <input autocomplete="off" autofocus name="username" maxlength="16" placeholder="Username" type="text"><br>
+            <input autocomplete="off" name="first_name" maxlength="30" placeholder="First Name" type="text"><br>
+            <input autocomplete="off" name="last_name" maxlength="150" placeholder="Last Name" type="text"><br>
+            <input autocomplete="off" name="email" maxlength="150" placeholder="Email" type="text"><br><br>
+            <input name="pass1" placeholder="Password" type="password"><br>
+            <input name="pass2" placeholder="Confirm Password" type="password"><br><br>       
+            <button type="submit">Go</button>
+        </form>
+    </div>
+    {% if message %}{{ message }}{% endif %}
+
+{% endblock %}

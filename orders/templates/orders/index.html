@@ -1,0 +1,58 @@
+{% extends "orders/layout.html" %}
+
+{% block title %}
+    Pinocchio's Pizza & Subs
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // update number by cart
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log("dom loaded");
+        const userspan = document.getElementById('usernamespan');
+        const username = userspan.dataset.username;
+        console.log("username:");
+        console.log(username);
+
+        // get info from localstorage
+        var cart = JSON.parse(localStorage.getItem(username));
+        if (!cart) {
+            cart = {
+                'count': 0,
+                'items': {},
+            }
+        }
+        if(cart.count) {
+            updateCartCount(cart.count)
+        }
+    });
+    function updateCartCount(count) {
+        console.log("updateCartCount called")
+        document.getElementById("cart_count").innerHTML = "(" + count.toString() + ")"
+    }
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h3>Pinocchio's Pizza & Subs</h3>
+    {% if message %}
+        <p class="highlight">{{ message }}</p>
+    {% endif %}
+    <h4>Location</h4>
+    <a class="nostyle" target="_blank" href="https://www.google.com/maps/place/74+Winthrop+St,+Cambridge,+MA+02138">
+    74 Winthrop St<br>
+    Cambridge, MA 02138<br><br>
+    </a>
+    <h4>Hours</h4>
+    <table>
+        <tr><td>Sunday</td><td>1 pm</td><td>-</td><td>12 midnight</td></tr>
+        <tr><td>Monday - Thursday</td><td>11 am</td><td>-</td><td>1 am</td></tr>
+        <tr><td>Friday - Saturday</td><td>11 am</td><td>-</td><td>2:30 am*</td></tr>
+    </table> 
+    <br>
+    *Please note that when the undergraduate students are not in session we close on Friday and Saturday night at 1:00 am instead of 2:30 am
+    <br><br>
+    <a class="nostyle" href="{% url 'menu' %}"><h4>Menu</h4>View and place online order here</a>
+</div>
+{% endblock %}

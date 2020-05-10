@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="{% static 'orders/favicon.ico' %}" rel="icon">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'orders/styles.css' %}"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>{% block title %}{% endblock %}</title>
+        {% block scripts %}{% endblock %}
+    </head>
+
+    <body>
+        <div class="navi">
+            <a href="{% url 'index' %}" class="nostyle title">Pinnochio's Pizza</a>
+            <span class="right">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}" class="nostyle">Logout</a>
+                {% else %}
+                    <a href="{% url 'register' %}" class="nostyle">Register</a>&nbsp;
+                    <a href="{% url 'login' %}" class="nostyle">Login</a>
+                {% endif %}
+            </span>
+            {% if user.is_authenticated %}
+                <br>
+                <span id="usernamespan" data-username="{{ user.username }}">Logged in as: {{ user.username }}</span>
+                <span class="right"><a href="{% url 'cart' %}" class="nostyle">Cart<span id="cart_count"></span>/Checkout</a></span>
+            {% endif %}
+        </div>
+        {% block content %}{% endblock %}
+    </body>
+
+</html>
