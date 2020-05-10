@@ -41,6 +41,3 @@ Can delete from cart. From admin can mark order fulfilled.
 ### Other info
 Github:
 https://github.com/phil
-
-Youtube walkthrough:
-https://youtu.be/PXAU94GE54g
