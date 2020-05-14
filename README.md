@@ -45,7 +45,7 @@ To run the website following things need to be done:
   - Make migrations with `python manage.py makemigrations`.
   - Apply migrations with `python manage.py migrate`.
   - Create superuser with `python manage.py createsuperuser`.
-  - Initiate server with 'python manage.py runserver'
+  - Initiate server with `python manage.py runserver`
   
 
 
