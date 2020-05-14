@@ -8,6 +8,7 @@ Alright, it’s time to actually build your web application! Here are the requir
 
 #Menu:
 Your web application should support all of the available menu items for Pinnochio’s Pizza & Subs (a popular pizza place in Cambridge). It’s up to you, based on analyzing the menu and the various types of possible ordered items (small vs. large, toppings, additions, etc.) to decide how to construct your models to best represent the information. Add your models to orders/models.py, make the necessary migration files, and apply those migrations.
+The menu is populated from http://www.pinocchiospizza.net/menu.html 
 
 #Adding Items:
 Using Django Admin, site administrators (restaurant owners) should be able to add, update, and remove items on the menu. Add all of the items from the Pinnochio’s menu into your database using either the Admin UI or by running Python commands in Django’s shell.
@@ -36,6 +37,14 @@ Beyond these requirements, the design, look, and feel of the website are up to y
 
 The Personal Touch
 Can delete from cart. From admin can mark order fulfilled.
+
+## Initialization
+To run the website following things need to be done:
+  - Install dependencies with `pip install -r requirements.txt`. Besides Django it contains Pillow library to work with images.
+  - Make migrations with `python manage.py makemigrations`.
+  - Apply migrations with `python manage.py migrate`.
+  - Create superuser with `python manage.py createsuperuser`.
+  
 
 
 ### Other info
