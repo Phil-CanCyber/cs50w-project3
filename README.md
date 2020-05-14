@@ -40,4 +40,4 @@ Can delete from cart. From admin can mark order fulfilled.
 
 ### Other info
 Github:
-https://github.com/phil
+https://github.com/Phil-CanCyber/cs50w-project3
